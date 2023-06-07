@@ -5,4 +5,5 @@ export const colors = {
   primaryTextColor: '#C5C7CA',
   secondaryTextColor: '#7F8084',
   buttonBackground: '#4A96FF',
+  borderColor: '#35373B'
 };
