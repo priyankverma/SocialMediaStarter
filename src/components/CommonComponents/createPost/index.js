@@ -5,6 +5,7 @@ import PostingTextInput from '../postingTextInput';
 import { styles } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost } from '../../../redux/slices/addPostSlice';
+import { showMessage } from 'react-native-flash-message';
 
 function CreatePost(props) {
   const [postText, setPostText] = useState('');
@@ -27,6 +28,11 @@ function CreatePost(props) {
       };
 
       dispatch(addPost(payload));
+      showMessage({
+        message: 'Post Added ',
+        description: 'Your Post has been added successfully',
+        type: 'success',
+      });
       setPostText('')
     }
   };

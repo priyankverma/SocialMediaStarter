@@ -12,6 +12,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../redux/slices/authSlice';
 import CustomButton from '../CommonComponents/customButton';
+import { showMessage } from 'react-native-flash-message';
 
 function Dashboard({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,11 +21,15 @@ function Dashboard({ navigation }) {
   const { isLoggedIn, user } = useSelector(state => state.authSlice);
   const dispatch = useDispatch();
 
-
   let loginModalContent = modalContents.login;
   let registerModalContent = modalContents.register;
 
   const handleLogin = () => {
+    showMessage({
+      message: 'Logged In',
+      description: 'You have been Logged in successfully',
+      type: 'success',
+    });
     dispatch(login('Jane'));
   };
   const handleLogout = () => {
@@ -73,7 +78,11 @@ function Dashboard({ navigation }) {
               the community 🤗
             </Text>
           </View>
-          <CreatePost postAction={() => setModalVisible(true)} />
+          <CreatePost
+            postAction={() => {
+              setModalVisible(true);
+            }}
+          />
           {posts &&
             posts.map(post => (
               <Post key={`${post.userName} ${post.timePassed}`} post={post} />
@@ -86,6 +95,11 @@ function Dashboard({ navigation }) {
               width={'80%'}
               ctaText="Logout"
               onPress={() => {
+                showMessage({
+                  message: 'Logged Out',
+                  description: 'You have been logged out successfully',
+                  type: 'success',
+                });
                 handleLogout();
               }}
               hint="Tap to logout"
