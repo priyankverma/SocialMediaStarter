@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors } from '../../../constants/colorPallete';
 import { commonStyles } from '../commonStyles';
 import CustomTextInput from '../customTextInput';
 
 function InputModal(props) {
-  const content = props?.contentToRender;
-  const loginContent = content.login;
+  const {contentToRender, bottomSheet, toggleModal} =props
+  const loginContent = contentToRender.login;
   return (
     <View style={commonStyles.loginModal}>
       <View style={commonStyles.modalHeadingWrap}>
@@ -22,7 +18,7 @@ function InputModal(props) {
         </Text>
       </View>
       <View style={commonStyles.modalContentWrap}>
-        {content.login.inputComponent.map((item, index) => (
+        {loginContent.inputComponent.map((item, index) => (
           <CustomTextInput key={item.title} item={item} />
         ))}
         <TouchableOpacity
@@ -33,11 +29,22 @@ function InputModal(props) {
 
         <Text style={commonStyles.bottomCTA}>
           {loginContent.bottomQuestion}{' '}
-          <Text onPress={()=> loginContent.bottmCTAAction()}style={{ color: colors.primaryTextColor }}>
+          <Text
+            onPress={() => loginContent.bottmCTAAction()}
+            style={{ color: colors.primaryTextColor }}>
             {loginContent.bottomQuestionCTA}
           </Text>
         </Text>
       </View>
+      {bottomSheet && (
+        <View style={commonStyles.crossWrap}>
+          <TouchableOpacity onPress={toggleModal}>
+            <Image
+              source={require('../../../assets/images/cross.png')}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }

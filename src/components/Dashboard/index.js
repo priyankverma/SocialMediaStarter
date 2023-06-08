@@ -12,8 +12,11 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { commonStyles } from '../CommonComponents/commonStyles';
 import CreatePost from '../CommonComponents/createPost';
+import InputModal from '../CommonComponents/inputModal';
 import Post from '../CommonComponents/post';
 import { styles } from './styles';
+import { BlurView } from '@react-native-community/blur';
+
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 const postsData = [
   {
@@ -47,7 +50,41 @@ const postsData = [
     edited: false,
   },
 ];
+
 function Dashboard({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const modalContents = {
+    login: {
+      messageLine: 'WELCOME BACK',
+      instruction: 'Log into your account',
+      inputComponent: [
+        {
+          title: 'Email or Username',
+          placeholder: 'Enter your email',
+          type: 'input',
+          onChange: e => {
+            setUserName(e);
+          },
+          value: userName,
+        },
+        {
+          title: 'Password',
+          placeholder: 'Choose a preferred password',
+          type: 'password',
+          inlineText: 'Forgot password?',
+          onChange: e => setPassword(e),
+          value: password,
+        },
+      ],
+      ctaText: 'Login now',
+      ctaAction: () => setModalVisible(false),
+      bottomQuestion: 'Not registered yet?',
+      bottomQuestionCTA: 'Register →',
+      bottmCTAAction: () => alert('Take me to Register'),
+    },
+  };
   return (
     <SafeAreaView style={commonStyles.wrapper}>
       <ScrollView style={commonStyles.scrollWrap}>
@@ -59,7 +96,7 @@ function Dashboard({ navigation }) {
               the community 🤗
             </Text>
           </View>
-          <CreatePost />
+          <CreatePost postAction={() => setModalVisible(true)} />
           {postsData.map((post, index) => (
             <Post post={post} />
           ))}
@@ -70,6 +107,27 @@ function Dashboard({ navigation }) {
           />
         </View>
       </ScrollView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+      >
+        <BlurView
+          style={styles.absolute}
+          blurType="dark"
+          blurAmount={1}
+          reducedTransparencyFallbackColor="white"
+        />
+        <View style={styles.centeredView}>
+          <View
+            style={[styles.modalItem, { height: WINDOW_HEIGHT * 0.5 }]}></View>
+          <InputModal
+            contentToRender={modalContents}
+            bottomSheet={true}
+            toggleModal={() => setModalVisible(false)}
+          />
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }

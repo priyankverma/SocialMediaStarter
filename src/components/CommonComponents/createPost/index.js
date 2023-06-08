@@ -3,7 +3,8 @@ import { TextInput, View, Text, Alert } from 'react-native';
 import CustomButton from '../customButton';
 import PostingTextInput from '../postingTextInput';
 import { styles } from './styles';
-function CreatePost() {
+function CreatePost(props) {
+  const { postAction } = props;
   return (
     <View style={styles.createPostWrap}>
       <View style={styles.createPostTextWrap}>
@@ -19,7 +20,7 @@ function CreatePost() {
           alignment="flex-end"
           width={'30%'}
           ctaText="Post"
-          onPress={() => alert()}
+          onPress={postAction}
         />
       </View>
     </View>

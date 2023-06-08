@@ -75,5 +75,10 @@ export const commonStyles = StyleSheet.create({
     lineHeight: 17,
     color: colors.secondaryTextColor,
 
+  },
+  crossWrap:{
+    position: 'absolute',
+    top: '5%',
+    right: '3%'
   }
 });

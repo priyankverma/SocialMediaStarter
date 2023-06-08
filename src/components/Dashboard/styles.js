@@ -10,6 +10,13 @@ export const styles = StyleSheet.create({
   welcomeNoteView: {
     paddingVertical: 5,
   },
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
   helloText: {
     fontFamily: 'Inter',
     fontWeight: '500',
@@ -29,10 +36,10 @@ export const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(0, 0, 0, 0.4);',
   },
   modalItem: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
