@@ -5,7 +5,6 @@ const WINDOW_HEIGHT = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   postWrap: {
-    minHeight: WINDOW_HEIGHT * 0.3,
     flex: 1,
     backgroundColor: colors.contentBackgroundColor,
     borderWidth: 2,
@@ -60,7 +59,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.appBackgroundColor,
     flexDirection: 'row',
     paddingVertical: '4%',
-    borderRadius: 8
+    borderRadius: 8,
   },
   post: {
     fontFamily: 'Inter',
@@ -76,6 +75,7 @@ export const styles = StyleSheet.create({
   postTextWrap: {
     flex: 0.85,
     paddingHorizontal: '3%',
+    justifyContent: 'center',
   },
   commentSection: {
     minHeight: WINDOW_HEIGHT * 0.06,
