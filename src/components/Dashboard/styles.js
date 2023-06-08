@@ -42,5 +42,8 @@ export const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
+  logoutWrap: {
+    paddingBottom: '20%'
+  }
  
 });

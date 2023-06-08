@@ -1,26 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
+  user: null,
+  isLoggedIn: false,
 };
 
-export const authSlice = createSlice({
-  name: 'counter',
+const authSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    increment: state => {
-      state.value += 1;
+    login: (state, action) => {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+
     },
-    decrement: state => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    logout: (state) => {
+      state.user = null;
+      state.isLoggedIn = false;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;

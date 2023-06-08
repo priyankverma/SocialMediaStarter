@@ -3,26 +3,32 @@ import { View, Text } from 'react-native';
 import CustomButton from '../customButton';
 import PostingTextInput from '../postingTextInput';
 import { styles } from './styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPost } from '../../../redux/slices/addPostSlice';
 
 function CreatePost(props) {
   const [postText, setPostText] = useState('');
+  const isLoggedIn = useSelector(state => state.authSlice?.isLoggedIn);
+
   const { postAction } = props;
   const dispatch = useDispatch();
 
   const handleAddPost = () => {
-    let payload = {
-      userImage: require('../../../assets/images/user1.png'),
-      userName: 'Jane',
-      timePassed: 'a few mins ago',
-      moodEmoji: require('../../../assets/images/wave.png'),
-      postText: postText,
-      commentNumber: '0',
-      edited: false,
-    };
+    if (!isLoggedIn) postAction();
+    else {
+      let payload = {
+        userImage: require('../../../assets/images/user1.png'),
+        userName: 'Jane',
+        timePassed: 'a few mins ago',
+        moodEmoji: require('../../../assets/images/wave.png'),
+        postText: postText,
+        commentNumber: '0',
+        edited: false,
+      };
 
-    dispatch(addPost(payload));
+      dispatch(addPost(payload));
+      setPostText('')
+    }
   };
 
   return (
@@ -39,7 +45,7 @@ function CreatePost(props) {
       </View>
 
       <View style={styles.createPostInputWrap}>
-        <PostingTextInput onChangeText={value => setPostText(value)} />
+        <PostingTextInput value={postText} onChangeText={value => setPostText(value)} />
       </View>
 
       <View style={styles.createPostButtonWrap}>
@@ -50,7 +56,6 @@ function CreatePost(props) {
           ctaText="Post"
           onPress={() => {
             handleAddPost();
-            // postAction();
           }}
           hint="Post your created post"
         />

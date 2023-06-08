@@ -4,16 +4,16 @@ import { colors } from '../../../constants/colorPallete';
 import { styles } from './styles';
 
 function PostingTextInput(props) {
+  const { value } = props;
   return (
     <View style={styles.textInputWrap}>
       <View style={styles.inputRow}>
         <View style={styles.imageWrap}>
-          <Image
-            source={require('../../../assets/images/callout.png')}
-          />
+          <Image source={require('../../../assets/images/callout.png')} />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
+            value={value}
             placeholderTextColor={colors.secondaryTextColor}
             placeholder="How are you feeling today?"
             style={styles.textInput}

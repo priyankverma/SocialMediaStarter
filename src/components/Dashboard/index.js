@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Modal, ScrollView } from 'react-native';
+import { View, Text, Modal, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { commonStyles } from '../CommonComponents/commonStyles';
 import CreatePost from '../CommonComponents/createPost';
@@ -7,20 +7,32 @@ import InputModal from '../CommonComponents/inputModal';
 import Post from '../CommonComponents/post';
 import { styles } from './styles';
 import { BlurView } from '@react-native-community/blur';
-import { modalContents, postsData } from '../../constants/dataConstants';
+import { modalContents } from '../../constants/dataConstants';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../../redux/slices/authSlice';
+import CustomButton from '../CommonComponents/customButton';
 
 function Dashboard({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
   const { posts } = useSelector(state => state.addPostSlice);
-  console.log('psot', posts);
+  const { isLoggedIn, user } = useSelector(state => state.authSlice);
+  const dispatch = useDispatch();
+
 
   let loginModalContent = modalContents.login;
   let registerModalContent = modalContents.register;
+
+  const handleLogin = () => {
+    dispatch(login('Jane'));
+  };
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   useEffect(() => {
     loginModalContent.ctaAction = () => {
+      handleLogin();
       setModalVisible(false);
     };
     registerModalContent.ctaAction = () => {
@@ -49,7 +61,7 @@ function Dashboard({ navigation }) {
               accessibilityHint="Greeting text"
               accessibilityLabel="Hello Message"
               accessibilityRole="text">
-              Hello Jane
+              Hello {isLoggedIn ? user : 'User'}
             </Text>
             <Text
               style={styles.welcomeMessage}
@@ -67,6 +79,19 @@ function Dashboard({ navigation }) {
               <Post key={`${post.userName} ${post.timePassed}`} post={post} />
             ))}
         </View>
+        {isLoggedIn && (
+          <View style={styles.logoutWrap}>
+            <CustomButton
+              alignment="center"
+              width={'80%'}
+              ctaText="Logout"
+              onPress={() => {
+                handleLogout();
+              }}
+              hint="Tap to logout"
+            />
+          </View>
+        )}
       </ScrollView>
 
       <Modal

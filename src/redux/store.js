@@ -5,7 +5,7 @@ import addPostSlice from '../redux/slices/addPostSlice';
 
 export const store = configureStore({
   reducer: {
-    authentication: authSlice,
+    authSlice: authSlice,
     addPostSlice: addPostSlice,
   },
 });
