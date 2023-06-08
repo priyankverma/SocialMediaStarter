@@ -18,6 +18,10 @@ function PostingTextInput(props) {
             placeholder="How are you feeling today?"
             style={styles.textInput}
             onChangeText={props.onChangeText}
+            accessible={true}
+            accessibilityHint="Create Posts by typing in text box"
+            accessibilityLabel="Write you post"
+            accessibilityRole="text"
           />
         </View>
       </View>

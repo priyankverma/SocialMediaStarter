@@ -13,10 +13,19 @@ function CustomTextInput(props) {
     <View>
       <View style={styles.inlineView}>
         <Text
-          style={[commonStyles.bottomCTA, { color: colors.primaryTextColor }]}>
+          style={[commonStyles.bottomCTA, { color: colors.primaryTextColor }]}
+          accessible={true}
+          accessibilityLabel={title}
+          accessibilityRole="text"
+          accessibilityHint={`${title} Input Feild Label`}>
           {title}
         </Text>
-        {inlineText && <Text style={commonStyles.bottomCTA}>{inlineText}</Text>}
+        {inlineText && <Text style={commonStyles.bottomCTA}
+         accessible={true}
+         accessibilityLabel={`${inlineText} Inline link`}
+         accessibilityRole="link"
+         accessibilityHint={`${inlineText} link`}
+        >{inlineText}</Text>}
       </View>
 
       <TextInput
@@ -27,11 +36,21 @@ function CustomTextInput(props) {
         value={value}
         secureTextEntry={
           inlineText && !showPassword ? true : false
-        }></TextInput>
+        }
+        accessible={true}
+        accessibilityLabel={`${title} Label`}
+        accessibilityRole="text"
+        accessibilityHint={`${title} Input Feild`}
+        />
       {inlineText && (
         <TouchableOpacity
           style={styles.rightImage}
-          onPress={() => setShowPassword(!showPassword)}>
+          onPress={() => setShowPassword(!showPassword)}
+          accessible={true}
+          accessibilityLabel={`${title} Inline tappable`}
+          accessibilityRole="imagebutton"
+          accessibilityHint={`${title} Imagebutton`}
+          >
           <Image source={require('../../../assets/images/eye.png')} />
         </TouchableOpacity>
       )}

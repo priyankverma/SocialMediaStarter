@@ -9,7 +9,14 @@ function CreatePost(props) {
   return (
     <View style={styles.createPostWrap}>
       <View style={styles.createPostTextWrap}>
-        <Text style={styles.createPostText}>Create Post</Text>
+        <Text
+          accessible={true}
+          accessibilityHint="Create Posts by typing in text box"
+          accessibilityLabel="Create Post"
+          accessibilityRole="header"
+          style={styles.createPostText}>
+          Create Post
+        </Text>
       </View>
 
       <View style={styles.createPostInputWrap}>
@@ -23,6 +30,7 @@ function CreatePost(props) {
           width={'30%'}
           ctaText="Post"
           onPress={postAction}
+          hint='Post your created post'
         />
       </View>
     </View>

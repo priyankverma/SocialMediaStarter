@@ -60,6 +60,10 @@ function Login({ navigation }) {
           <Image
             style={styles.logo}
             source={require('../../assets/images/logo.png')}
+            accessible={true}
+            accessibilityLabel={'Logo'}
+            accessibilityRole="image"
+            accessibilityHint={'App Logo'}
           />
           <InputModal
             buttonDisabled={!isFormDataValid}

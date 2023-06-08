@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  Button,
-  Modal,
-  ScrollView,
-} from 'react-native';
+import { View, Text, Button, Modal, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { commonStyles } from '../CommonComponents/commonStyles';
 import CreatePost from '../CommonComponents/createPost';
@@ -79,8 +73,22 @@ function Dashboard({ navigation }) {
       <ScrollView style={commonStyles.scrollWrap}>
         <View style={styles.contentWrap}>
           <View style={styles.welcomeNoteView}>
-            <Text style={styles.helloText}>Hello Jane</Text>
-            <Text style={styles.welcomeMessage}>
+            <Text
+              style={styles.helloText}
+              accessible={true}
+              accessibilityHint="Greeting text"
+              accessibilityLabel="Hello Message"
+              accessibilityRole="text"
+             >
+              Hello Jane
+            </Text>
+            <Text
+              style={styles.welcomeMessage}
+              accessible={true}
+              accessibilityHint="Greeting text with instruction"
+              accessibilityLabel="Greeting text with instruction"
+              accessibilityRole="text"
+             >
               How are you doing today? Would you like to share something with
               the community 🤗
             </Text>
