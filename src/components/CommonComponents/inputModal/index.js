@@ -5,10 +5,21 @@ import { commonStyles } from '../commonStyles';
 import CustomTextInput from '../customTextInput';
 
 function InputModal(props) {
-  const {contentToRender, bottomSheet, toggleModal} =props
-  const loginContent = contentToRender.login;
+  const {
+    contentToRender,
+    bottomSheet,
+    toggleModal,
+    onChangeText,
+    registerModal,
+  } = props;
+  const loginContent = contentToRender;
   return (
-    <View style={commonStyles.loginModal}>
+    <View
+      style={
+        registerModal
+          ? [commonStyles.loginModal, { height: '70%', maxHeight: 500 }]
+          : commonStyles.loginModal
+      }>
       <View style={commonStyles.modalHeadingWrap}>
         <Text style={commonStyles.messageLineText}>
           {loginContent.messageLine}
@@ -19,7 +30,11 @@ function InputModal(props) {
       </View>
       <View style={commonStyles.modalContentWrap}>
         {loginContent.inputComponent.map((item, index) => (
-          <CustomTextInput key={item.title} item={item} />
+          <CustomTextInput
+            key={item.title}
+            item={item}
+            onChangeText={onChangeText}
+          />
         ))}
         <TouchableOpacity
           onPress={() => loginContent.ctaAction()}
@@ -39,9 +54,7 @@ function InputModal(props) {
       {bottomSheet && (
         <View style={commonStyles.crossWrap}>
           <TouchableOpacity onPress={toggleModal}>
-            <Image
-              source={require('../../../assets/images/cross.png')}
-            />
+            <Image source={require('../../../assets/images/cross.png')} />
           </TouchableOpacity>
         </View>
       )}

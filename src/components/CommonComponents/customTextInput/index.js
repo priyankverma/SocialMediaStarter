@@ -5,7 +5,9 @@ import { colors } from '../../../constants/colorPallete';
 import { commonStyles } from '../commonStyles';
 
 function CustomTextInput(props) {
-  const { title, placeholder, type, inlineText, onChange, value } = props.item;
+  const { onChangeText, item } = props;
+
+  const { title, placeholder, type, inlineText, value, id } = item;
   return (
     <View>
       <View style={styles.inlineView}>
@@ -20,7 +22,7 @@ function CustomTextInput(props) {
         placeholderTextColor={colors.secondaryTextColor}
         placeholder={placeholder}
         style={styles.inputFeild}
-        onChangeText={onChange}
+        onChangeText={e => onChangeText(e, id)}
         value={value}
         secureTextEntry={inlineText ? true : false}></TextInput>
       {inlineText && (
