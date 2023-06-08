@@ -30,14 +30,14 @@ export const modalContents = {
         title: 'Email',
         placeholder: 'Enter your email',
         type: 'input',
-       
+
         id: 'registerEmail',
       },
       {
         title: 'Username',
         placeholder: 'Choose a preferred username',
         type: 'input',
-       
+
         id: 'registerName',
       },
       {
@@ -45,7 +45,7 @@ export const modalContents = {
         placeholder: 'Choose a preferred password',
         type: 'password',
         inlineText: 'Forgot password?',
-       
+
         id: 'registerPassword',
       },
     ],

@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../components/LoginScreen';
 import Register from '../components/RegisterScreen';
-
 import Dashboard from '../components/Dashboard';
 import { colors } from '../constants/colorPallete';
 

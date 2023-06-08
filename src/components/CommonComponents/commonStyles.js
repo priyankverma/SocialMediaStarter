@@ -7,15 +7,14 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: colors.appBackgroundColor,
     flex: 1,
   },
-  scrollWrap:{
+  scrollWrap: {
     paddingHorizontal: 16,
     paddingTop: '5%',
   },
-  contentWrap:{
+  contentWrap: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 16
-
+    paddingHorizontal: 16,
   },
 
   loginModal: {
@@ -25,7 +24,7 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: colors.contentBackgroundColor,
     borderRadius: 8,
     overflow: 'hidden',
-    flex: 1
+    flex: 1,
   },
   modalHeadingWrap: {
     flex: 0.25,
@@ -60,29 +59,27 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     marginBottom: 10,
-    marginTop: 5
-
+    marginTop: 5,
   },
-  disabled:{
-    opacity: 0.5
+  disabled: {
+    opacity: 0.5,
   },
-  buttonText:{
+  buttonText: {
     color: colors.white,
     fontWeight: '500',
     fontSize: fontSize.font16,
     lineHeight: 19,
   },
-  bottomCTA:{
+  bottomCTA: {
     paddingTop: 5,
     fontWeight: '500',
-    fontSize:fontSize.font14,
+    fontSize: fontSize.font14,
     lineHeight: 17,
     color: colors.secondaryTextColor,
-
   },
-  crossWrap:{
+  crossWrap: {
     position: 'absolute',
     top: '5%',
-    right: '3%'
-  }
+    right: '3%',
+  },
 });

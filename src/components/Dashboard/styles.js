@@ -43,7 +43,6 @@ export const styles = StyleSheet.create({
     elevation: 2,
   },
   logoutWrap: {
-    paddingBottom: '20%'
-  }
- 
+    paddingBottom: '20%',
+  },
 });

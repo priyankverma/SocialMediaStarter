@@ -13,12 +13,10 @@ function CustomButton(props) {
         { width, alignSelf: alignment || 'flex-start' },
         disabled && commonStyles.disabled,
       ]}
-      
       accessible={true}
       accessibilityLabel={ctaText}
       accessibilityRole="button"
-      accessibilityHint={hint}
-      >
+      accessibilityHint={hint}>
       <Text style={commonStyles.buttonText}>{ctaText}</Text>
     </TouchableOpacity>
   );

@@ -33,7 +33,7 @@ function CreatePost(props) {
         description: 'Your Post has been added successfully',
         type: 'success',
       });
-      setPostText('')
+      setPostText('');
     }
   };
 
@@ -51,7 +51,10 @@ function CreatePost(props) {
       </View>
 
       <View style={styles.createPostInputWrap}>
-        <PostingTextInput value={postText} onChangeText={value => setPostText(value)} />
+        <PostingTextInput
+          value={postText}
+          onChangeText={value => setPostText(value)}
+        />
       </View>
 
       <View style={styles.createPostButtonWrap}>

@@ -18,7 +18,7 @@ function Login({ navigation }) {
   let loginModalContent = modalContents.login;
   useEffect(() => {
     loginModalContent.ctaAction = () => {
-      setLoginScreenFormData(initialState)
+      setLoginScreenFormData(initialState);
       navigation.navigate('Dashboard');
     };
 
