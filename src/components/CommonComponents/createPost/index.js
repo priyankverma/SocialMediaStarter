@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
-import { TextInput, View, Text, Alert } from 'react-native';
+import { View, Text } from 'react-native';
 import CustomButton from '../customButton';
 import PostingTextInput from '../postingTextInput';
 import { styles } from './styles';
+import { useDispatch } from 'react-redux';
+import { addPost } from '../../../redux/slices/addPostSlice';
+
 function CreatePost(props) {
   const [postText, setPostText] = useState('');
   const { postAction } = props;
+  const dispatch = useDispatch();
+
+  const handleAddPost = () => {
+    let payload = {
+      userImage: require('../../../assets/images/user1.png'),
+      userName: 'Jane',
+      timePassed: 'a few mins ago',
+      moodEmoji: require('../../../assets/images/wave.png'),
+      postText: postText,
+      commentNumber: '0',
+      edited: false,
+    };
+
+    dispatch(addPost(payload));
+  };
+
   return (
     <View style={styles.createPostWrap}>
       <View style={styles.createPostTextWrap}>
@@ -29,8 +48,11 @@ function CreatePost(props) {
           alignment="flex-end"
           width={'30%'}
           ctaText="Post"
-          onPress={postAction}
-          hint='Post your created post'
+          onPress={() => {
+            handleAddPost();
+            // postAction();
+          }}
+          hint="Post your created post"
         />
       </View>
     </View>

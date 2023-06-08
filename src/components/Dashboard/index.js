@@ -9,10 +9,13 @@ import { styles } from './styles';
 import { BlurView } from '@react-native-community/blur';
 import { modalContents, postsData } from '../../constants/dataConstants';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useSelector } from 'react-redux';
 
 function Dashboard({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
+  const { posts } = useSelector(state => state.addPostSlice);
+  console.log('psot', posts);
 
   let loginModalContent = modalContents.login;
   let registerModalContent = modalContents.register;
@@ -45,8 +48,7 @@ function Dashboard({ navigation }) {
               accessible={true}
               accessibilityHint="Greeting text"
               accessibilityLabel="Hello Message"
-              accessibilityRole="text"
-             >
+              accessibilityRole="text">
               Hello Jane
             </Text>
             <Text
@@ -54,21 +56,16 @@ function Dashboard({ navigation }) {
               accessible={true}
               accessibilityHint="Greeting text with instruction"
               accessibilityLabel="Greeting text with instruction"
-              accessibilityRole="text"
-             >
+              accessibilityRole="text">
               How are you doing today? Would you like to share something with
               the community 🤗
             </Text>
           </View>
           <CreatePost postAction={() => setModalVisible(true)} />
-          {postsData.map((post) => (
-            <Post key={`${post.userName} ${post.timePassed}` } post={post} />
-          ))}
-
-          <Button
-            title="Goto Login"
-            onPress={() => navigation.navigate('Login')}
-          />
+          {posts &&
+            posts.map(post => (
+              <Post key={`${post.userName} ${post.timePassed}`} post={post} />
+            ))}
         </View>
       </ScrollView>
 
