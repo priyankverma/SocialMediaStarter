@@ -54,3 +54,36 @@ export const modalContents = {
     bottomQuestionCTA: 'Login →',
   },
 };
+
+export const postsData = [
+  {
+    userImage: require('../assets/images/user1.png'),
+    userName: 'Theresa Webb',
+    timePassed: '5mins ago',
+    moodEmoji: require('../assets/images/wave.png'),
+    postText:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    commentNumber: '24',
+    edited: false,
+  },
+  {
+    userImage: require('../assets/images/user2.png'),
+    userName: 'Marvin McKinney',
+    timePassed: '8mins ago',
+    moodEmoji: require('../assets/images/sad.png'),
+    postText:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    commentNumber: '24',
+    edited: true,
+  },
+  {
+    userImage: require('../assets/images/user1.png'),
+    userName: 'Lonie Cole',
+    timePassed: '11mins ago',
+    moodEmoji: require('../assets/images/sad.png'),
+    postText:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+    commentNumber: '2',
+    edited: false,
+  },
+];
