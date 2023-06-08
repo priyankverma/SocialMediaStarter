@@ -1,13 +1,14 @@
-import React from 'react';
-import { Image, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../../constants/colorPallete';
 import { commonStyles } from '../commonStyles';
 
 function CustomTextInput(props) {
   const { onChangeText, item } = props;
+  const [showPassword, setShowPassword] = useState(false);
 
-  const { title, placeholder, type, inlineText, value, id } = item;
+  const { title, placeholder, inlineText, value, id } = item;
   return (
     <View>
       <View style={styles.inlineView}>
@@ -21,15 +22,18 @@ function CustomTextInput(props) {
       <TextInput
         placeholderTextColor={colors.secondaryTextColor}
         placeholder={placeholder}
-        style={styles.inputFeild}
+        style={[styles.inputFeild, inlineText && styles.extraPadding]}
         onChangeText={e => onChangeText(e, id)}
         value={value}
-        secureTextEntry={inlineText ? true : false}></TextInput>
+        secureTextEntry={
+          inlineText && !showPassword ? true : false
+        }></TextInput>
       {inlineText && (
-        <Image
+        <TouchableOpacity
           style={styles.rightImage}
-          source={require('../../../assets/images/eye.png')}
-        />
+          onPress={() => setShowPassword(!showPassword)}>
+          <Image source={require('../../../assets/images/eye.png')} />
+        </TouchableOpacity>
       )}
     </View>
   );

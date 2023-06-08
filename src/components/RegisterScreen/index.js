@@ -3,40 +3,39 @@ import { View, Image, SafeAreaView, Dimensions } from 'react-native';
 import { commonStyles } from '../CommonComponents/commonStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 const { height: WINDOW_HEIGHT, width: WINDOW_WIDTH } = Dimensions.get('window');
-import { styles } from './styles';
+import { styles } from '../LoginScreen/styles';
 import InputModal from '../CommonComponents/inputModal';
 import { modalContents } from '../../constants/dataConstants';
 
-function Login({ navigation }) {
-  const initialState = {
-    loginName: '',
-    loginPassword: '',
-  };
-  const [loginScreenFormData, setLoginScreenFormData] = useState(initialState);
+function Register({ navigation }) {
+  const [registerScreenFormData, setRegisterScreenFormData] = useState({
+    registerEmail: '',
+    registerName: '',
+    registerPassword: '',
+  });
   const [isFormDataValid, setIsFormDataValid] = useState(false);
 
-  let loginModalContent = modalContents.login;
+  let registerModalContent = modalContents.register;
   useEffect(() => {
-    loginModalContent.ctaAction = () => {
-      setLoginScreenFormData(initialState)
-      navigation.navigate('Dashboard');
+    registerModalContent.ctaAction = () => {
+      navigation.navigate('Login');
     };
 
-    loginModalContent.bottmCTAAction = () => {
-      navigation.navigate('Register');
+    registerModalContent.bottmCTAAction = () => {
+      navigation.navigate('Login');
     };
   }, []);
 
   const userInputChange = (value, id) => {
-    setLoginScreenFormData({
-      ...loginScreenFormData,
+    setRegisterScreenFormData({
+      ...registerScreenFormData,
       [id]: value,
     });
   };
 
   useEffect(() => {
-    if (loginScreenFormData) {
-      const isValid = Object.values(loginScreenFormData).every(
+    if (registerScreenFormData) {
+      const isValid = Object.values(registerScreenFormData).every(
         obj => obj !== '',
       );
       if (isValid) {
@@ -45,7 +44,7 @@ function Login({ navigation }) {
         setIsFormDataValid(false);
       }
     }
-  }, [loginScreenFormData]);
+  }, [registerScreenFormData]);
   return (
     <SafeAreaView style={commonStyles.wrapper}>
       <KeyboardAwareScrollView extraHeight={180} enableOnAndroid>
@@ -63,8 +62,9 @@ function Login({ navigation }) {
           />
           <InputModal
             buttonDisabled={!isFormDataValid}
-            contentToRender={loginModalContent}
+            contentToRender={registerModalContent}
             onChangeText={(value, id) => userInputChange(value, id)}
+            registerModal
           />
         </View>
       </KeyboardAwareScrollView>
@@ -72,4 +72,4 @@ function Login({ navigation }) {
   );
 }
 
-export default Login;
+export default Register;

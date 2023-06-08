@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInput, View, Text, Alert } from 'react-native';
 import CustomButton from '../customButton';
 import PostingTextInput from '../postingTextInput';
 import { styles } from './styles';
 function CreatePost(props) {
+  const [postText, setPostText] = useState('');
   const { postAction } = props;
   return (
     <View style={styles.createPostWrap}>
@@ -12,11 +13,12 @@ function CreatePost(props) {
       </View>
 
       <View style={styles.createPostInputWrap}>
-        <PostingTextInput />
+        <PostingTextInput onChangeText={value => setPostText(value)} />
       </View>
 
       <View style={styles.createPostButtonWrap}>
         <CustomButton
+          disabled={postText ? false : true}
           alignment="flex-end"
           width={'30%'}
           ctaText="Post"

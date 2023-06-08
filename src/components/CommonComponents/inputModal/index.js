@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors } from '../../../constants/colorPallete';
 import { commonStyles } from '../commonStyles';
+import CustomButton from '../customButton';
 import CustomTextInput from '../customTextInput';
 
 function InputModal(props) {
@@ -11,43 +12,48 @@ function InputModal(props) {
     toggleModal,
     onChangeText,
     registerModal,
+    buttonDisabled,
   } = props;
-  const loginContent = contentToRender;
   return (
     <View
       style={
         registerModal
-          ? [commonStyles.loginModal, { height: '70%', maxHeight: 500 }]
+          ? [commonStyles.loginModal,
+             { height: '70%', maxHeight: 500 }
+            ]
           : commonStyles.loginModal
       }>
       <View style={commonStyles.modalHeadingWrap}>
         <Text style={commonStyles.messageLineText}>
-          {loginContent.messageLine}
+          {contentToRender.messageLine}
         </Text>
         <Text style={commonStyles.instructionText}>
-          {loginContent.instruction}
+          {contentToRender.instruction}
         </Text>
       </View>
       <View style={commonStyles.modalContentWrap}>
-        {loginContent.inputComponent.map((item, index) => (
+        {contentToRender.inputComponent.map((item, index) => (
           <CustomTextInput
             key={item.title}
             item={item}
             onChangeText={onChangeText}
           />
         ))}
-        <TouchableOpacity
-          onPress={() => loginContent.ctaAction()}
-          style={commonStyles.buttonWrap}>
-          <Text style={commonStyles.buttonText}>{loginContent.ctaText}</Text>
-        </TouchableOpacity>
+
+          <CustomButton
+            disabled={buttonDisabled}
+            width={'100%'}
+            ctaText={contentToRender.ctaText}
+            onPress={() => contentToRender.ctaAction()}
+          />
+
 
         <Text style={commonStyles.bottomCTA}>
-          {loginContent.bottomQuestion}{' '}
+          {contentToRender.bottomQuestion}{' '}
           <Text
-            onPress={() => loginContent.bottmCTAAction()}
+            onPress={() => contentToRender.bottmCTAAction()}
             style={{ color: colors.primaryTextColor }}>
-            {loginContent.bottomQuestionCTA}
+            {contentToRender.bottomQuestionCTA}
           </Text>
         </Text>
       </View>

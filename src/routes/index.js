@@ -2,6 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../components/LoginScreen';
+import Register from '../components/RegisterScreen';
+
 import Dashboard from '../components/Dashboard';
 import { colors } from '../constants/colorPallete';
 
@@ -16,12 +18,9 @@ function Routes() {
           statusBarColor: colors.appBackgroundColor,
           statusBarStyle: 'light',
         }}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
-
-        <Stack.Screen
-          name="Login"
-          component={Login}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

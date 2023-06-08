@@ -25,6 +25,7 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: colors.contentBackgroundColor,
     borderRadius: 8,
     overflow: 'hidden',
+    flex: 1
   },
   modalHeadingWrap: {
     flex: 0.25,
@@ -61,6 +62,9 @@ export const commonStyles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 5
 
+  },
+  disabled:{
+    opacity: 0.5
   },
   buttonText:{
     color: colors.white,

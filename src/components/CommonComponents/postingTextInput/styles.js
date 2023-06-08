@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: colors.textInputBackground,
-    height: '40%',
     paddingLeft: '2%',
     color: colors.primaryTextColor,
   },

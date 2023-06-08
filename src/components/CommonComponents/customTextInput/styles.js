@@ -1,9 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../../constants/colorPallete';
 export const styles = StyleSheet.create({
-  inputWrapper: {
-    // paddingHorizontal: 10,
-  },
+  inputWrapper: {},
   inlineView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -17,7 +15,7 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 10,
     position: 'relative',
-    color: colors.primaryTextColor
+    color: colors.primaryTextColor,
   },
   rightImage: {
     position: 'absolute',
@@ -25,5 +23,8 @@ export const styles = StyleSheet.create({
     right: '7%',
     height: 20,
     width: 20,
+  },
+  extraPadding: {
+    paddingRight: '20%',
   },
 });

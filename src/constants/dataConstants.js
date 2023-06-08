@@ -7,7 +7,6 @@ export const modalContents = {
         title: 'Email or Username',
         placeholder: 'Enter your email',
         type: 'input',
-        value: 'userName',
         id: 'loginName',
       },
       {
@@ -15,14 +14,12 @@ export const modalContents = {
         placeholder: 'Choose a preferred password',
         type: 'password',
         inlineText: 'Forgot password?',
-        value: 'password',
         id: 'loginPassword',
       },
     ],
     ctaText: 'Login now',
     bottomQuestion: 'Not registered yet?',
     bottomQuestionCTA: 'Register →',
-    bottmCTAAction: () => alert('Take me to Register'),
   },
 
   register: {
@@ -34,7 +31,6 @@ export const modalContents = {
         placeholder: 'Enter your email',
         type: 'input',
        
-        value: 'userName',
         id: 'registerEmail',
       },
       {
@@ -42,7 +38,6 @@ export const modalContents = {
         placeholder: 'Choose a preferred username',
         type: 'input',
        
-        value: 'userName',
         id: 'registerName',
       },
       {
@@ -51,14 +46,11 @@ export const modalContents = {
         type: 'password',
         inlineText: 'Forgot password?',
        
-        value: 'password',
         id: 'registerPassword',
       },
     ],
     ctaText: 'Continue',
-    // ctaAction: () => setModalVisible(false),
     bottomQuestion: 'Already have an account?',
     bottomQuestionCTA: 'Login →',
-    bottmCTAAction: () => alert('Take me to Register'),
   },
 };

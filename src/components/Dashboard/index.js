@@ -3,9 +3,6 @@ import {
   View,
   Text,
   Button,
-  Alert,
-  Pressable,
-  Dimensions,
   Modal,
   ScrollView,
 } from 'react-native';
@@ -17,8 +14,8 @@ import Post from '../CommonComponents/post';
 import { styles } from './styles';
 import { BlurView } from '@react-native-community/blur';
 import { modalContents } from '../../constants/dataConstants';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const WINDOW_HEIGHT = Dimensions.get('window').height;
 const postsData = [
   {
     userImage: require('../../assets/images/user1.png'),
@@ -62,9 +59,14 @@ function Dashboard({ navigation }) {
     loginModalContent.ctaAction = () => {
       setModalVisible(false);
     };
-    // navigation.navigate('Login')};
-    registerModalContent.ctaAction = () =>
-      alert('I am here buddy for Register');
+    registerModalContent.ctaAction = () => {
+      setModalVisible(true);
+      setRegisterModal(false);
+    };
+    registerModalContent.bottmCTAAction = () => {
+      setModalVisible(false);
+      setRegisterModal(true);
+    };
 
     loginModalContent.bottmCTAAction = () => {
       setModalVisible(false);
@@ -94,9 +96,11 @@ function Dashboard({ navigation }) {
           />
         </View>
       </ScrollView>
+
       <Modal
         animationType="slide"
         transparent={true}
+        style={{ backgroundColor: 'red', flex: 1 }}
         visible={modalVisible || registerModal}>
         <BlurView
           style={styles.absolute}
@@ -104,38 +108,30 @@ function Dashboard({ navigation }) {
           blurAmount={1}
           reducedTransparencyFallbackColor="white"
         />
-        {modalVisible && (
-          <View style={styles.centeredView}>
-            <View
-              style={[
-                styles.modalItem,
-                { height: WINDOW_HEIGHT * 0.5 },
-              ]}></View>
-            <InputModal
-              contentToRender={loginModalContent}
-              bottomSheet={true}
-              onChangeText={(e, id) => console.log({ id, e })}
-              toggleModal={() => setModalVisible(false)}
-            />
-          </View>
-        )}
 
-        {registerModal && (
-          <View style={styles.centeredView}>
-            <View
-              style={[
-                styles.modalItem,
-                { height: WINDOW_HEIGHT * 0.5 },
-              ]}></View>
-            <InputModal
-              registerModal={true}
-              contentToRender={registerModalContent}
-              bottomSheet={true}
-              onChangeText={(e, id) => console.log({ id, e })}
-              toggleModal={() => setRegisterModal(false)}
-            />
-          </View>
-        )}
+        <KeyboardAwareScrollView extraHeight={180} enableOnAndroid>
+          {modalVisible && (
+            <View style={styles.centeredView}>
+              <InputModal
+                contentToRender={loginModalContent}
+                bottomSheet={true}
+                onChangeText={(e, id) => console.log({ id, e })}
+                toggleModal={() => setModalVisible(false)}
+              />
+            </View>
+          )}
+          {registerModal && (
+            <View style={styles.centeredView}>
+              <InputModal
+                registerModal={true}
+                contentToRender={registerModalContent}
+                bottomSheet={true}
+                onChangeText={(e, id) => console.log({ id, e })}
+                toggleModal={() => setRegisterModal(false)}
+              />
+            </View>
+          )}
+        </KeyboardAwareScrollView>
       </Modal>
     </SafeAreaView>
   );

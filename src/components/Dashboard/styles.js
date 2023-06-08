@@ -32,26 +32,15 @@ export const styles = StyleSheet.create({
     color: colors.secondaryTextColor,
     paddingVertical: 8,
   },
-
   centeredView: {
-    flex: 1,
+    height: WINDOW_HEIGHT,
     justifyContent: 'flex-end',
     backgroundColor: 'rgba(0, 0, 0, 0.4);',
   },
-  modalItem: {
-    backgroundColor: 'transparent',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-  },
-
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
+ 
 });
