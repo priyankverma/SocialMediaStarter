@@ -1,3 +1,4 @@
+// custom posting textinput, with image at the left side
 import React from 'react';
 import { Image, TextInput, View } from 'react-native';
 import { colors } from '../../../constants/colorPallete';

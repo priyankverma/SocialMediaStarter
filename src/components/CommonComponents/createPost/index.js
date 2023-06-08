@@ -1,3 +1,4 @@
+//custom component to create posts
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import CustomButton from '../customButton';
@@ -14,6 +15,10 @@ function CreatePost(props) {
   const { postAction } = props;
   const dispatch = useDispatch();
 
+  /**
+   * function handles the action to perform on tapping POST button
+   * if the user is logged in, the post is added, otherwise login modal is opened
+   */
   const handleAddPost = () => {
     if (!isLoggedIn) postAction();
     else {

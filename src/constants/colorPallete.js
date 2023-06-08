@@ -1,3 +1,4 @@
+// color pallete defined, for the purpose of making single source of truth
 export const colors = {
   appBackgroundColor: '#131319',
   contentBackgroundColor: '#27292D',

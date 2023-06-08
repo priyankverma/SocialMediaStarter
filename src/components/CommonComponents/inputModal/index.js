@@ -1,3 +1,4 @@
+// custom input modal component for register and login template
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors } from '../../../constants/colorPallete';
@@ -18,7 +19,7 @@ function InputModal(props) {
     <View
       style={
         registerModal
-          ? [commonStyles.loginModal, { height: '70%', maxHeight: 500 }]
+          ? [commonStyles.loginModal, { height: '70%', maxHeight: 500 }] // additional styles if register modal is opened
           : commonStyles.loginModal
       }>
       <View style={commonStyles.modalHeadingWrap}>

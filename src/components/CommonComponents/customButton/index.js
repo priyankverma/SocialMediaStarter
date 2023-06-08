@@ -1,3 +1,4 @@
+// custom button component
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { commonStyles } from '../commonStyles';

@@ -1,3 +1,4 @@
+// custom post component that displays the post card with all information mapped via props
 import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { styles } from './styles';

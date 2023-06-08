@@ -5,7 +5,7 @@ import Login from '../components/LoginScreen';
 import Register from '../components/RegisterScreen';
 import Dashboard from '../components/Dashboard';
 import { colors } from '../constants/colorPallete';
-
+// navigational scheme setup, has all independent screens of the application
 function Routes() {
   const Stack = createNativeStackNavigator();
 

@@ -1,3 +1,5 @@
+// data constants created here for Modal (input modal) and posts to show
+
 export const modalContents = {
   login: {
     messageLine: 'WELCOME BACK',

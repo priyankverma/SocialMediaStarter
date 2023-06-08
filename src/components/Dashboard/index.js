@@ -1,3 +1,4 @@
+// dashboard component that opens up after login, and posts are visible
 import React, { useState, useEffect } from 'react';
 import { View, Text, Modal, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -23,7 +24,9 @@ function Dashboard({ navigation }) {
 
   let loginModalContent = modalContents.login;
   let registerModalContent = modalContents.register;
-
+  /**
+   * logs in the user and displays a success message
+   */
   const handleLogin = () => {
     showMessage({
       message: 'Logged In',
@@ -32,10 +35,16 @@ function Dashboard({ navigation }) {
     });
     dispatch(login('Jane'));
   };
+  /**
+   * logs out the user and displays a success message
+   */
   const handleLogout = () => {
     dispatch(logout());
   };
   useEffect(() => {
+    /**
+     * creating and passing in all the custom actions needed in the login/register templates
+     */
     loginModalContent.ctaAction = () => {
       handleLogin();
       setModalVisible(false);
