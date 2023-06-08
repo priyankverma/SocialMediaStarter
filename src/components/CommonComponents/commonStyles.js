@@ -7,6 +7,10 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: colors.appBackgroundColor,
     flex: 1,
   },
+  scrollWrap:{
+    paddingHorizontal: 16,
+    paddingTop: '5%',
+  },
   contentWrap:{
     justifyContent: 'center',
     alignItems: 'center',
@@ -45,16 +49,17 @@ export const commonStyles = StyleSheet.create({
   modalContentWrap: {
     flex: 0.75,
     paddingHorizontal: 10,
-
   },
   buttonWrap: {
-    height: 43,
+    height: '70%',
+    maxHeight: 43,
     width: '100%',
     backgroundColor: colors.buttonBackground,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,
-    marginVertical: 10
+    marginBottom: 10,
+    marginTop: 5
 
   },
   buttonText:{

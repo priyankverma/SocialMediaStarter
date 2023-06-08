@@ -16,11 +16,12 @@ function Routes() {
           statusBarColor: colors.appBackgroundColor,
           statusBarStyle: 'light',
         }}>
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+
         <Stack.Screen
           name="Login"
           component={Login}
         />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

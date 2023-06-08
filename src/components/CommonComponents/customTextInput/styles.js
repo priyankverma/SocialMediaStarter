@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 10,
     position: 'relative',
+    color: colors.primaryTextColor
   },
   rightImage: {
     position: 'absolute',
