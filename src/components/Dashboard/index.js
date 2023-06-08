@@ -40,18 +40,18 @@ function Dashboard({ navigation }) {
       handleLogin();
       setModalVisible(false);
     };
+    loginModalContent.bottmCTAAction = () => {
+      setModalVisible(false);
+      setRegisterModal(true);
+    };
+
     registerModalContent.ctaAction = () => {
       setModalVisible(true);
       setRegisterModal(false);
     };
     registerModalContent.bottmCTAAction = () => {
-      setModalVisible(false);
-      setRegisterModal(true);
-    };
-
-    loginModalContent.bottmCTAAction = () => {
-      setModalVisible(false);
-      setRegisterModal(true);
+      setModalVisible(true);
+      setRegisterModal(false);
     };
 
     showMessage({
