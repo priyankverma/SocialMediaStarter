@@ -53,6 +53,12 @@ function Dashboard({ navigation }) {
       setModalVisible(false);
       setRegisterModal(true);
     };
+
+    showMessage({
+      message: 'Logging Out',
+      description: 'You will be automatically logged out.',
+      type: 'danger',
+    });
   }, []);
 
   return (
@@ -84,8 +90,11 @@ function Dashboard({ navigation }) {
             }}
           />
           {posts &&
-            posts.map(post => (
-              <Post key={`${post.userName} ${post.timePassed}`} post={post} />
+            posts.map((post, index) => (
+              <Post
+                key={`${post.userName} ${index}  ${post.timePassed}`}
+                post={post}
+              />
             ))}
         </View>
         {isLoggedIn && (
